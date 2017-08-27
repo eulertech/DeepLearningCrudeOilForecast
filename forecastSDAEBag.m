@@ -1,6 +1,5 @@
-function Yfit = forecastSDAEBag( trainX,trainY,testX )
+function Yfit = forecastSDAEBag( trainX,trainY,testX, numBag )
 % generate a set of (N) training samples using bootstrapping
-numBag=100;
 [~,bootsam] = bootstrp(numBag, [], trainX, trainY);
 [aX,bX]=size(trainX);
 [aY,bY]=size(trainY);

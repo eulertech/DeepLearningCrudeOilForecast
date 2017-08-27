@@ -38,7 +38,7 @@ fnn.trainParam.showWindow = false;
 fnn.performParam.regularization=0.0001;
 fnn = train(fnn,features2,trainY);
 sDAE = stack(ae1,ae2,fnn);
-view(sDAE)
+%view(sDAE)
 
 sDAE = train(sDAE,trainX,trainY);
 Yfit = sDAE(testX);

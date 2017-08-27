@@ -4,10 +4,11 @@ t = cputime;
 load data.mat
 lag = 1;
 horizon = 1;
+numBag = 1;
 data = horzcat(macroFinancial, stockFlow, price, WTI);
 [trainX,trainY,testX,testY]=dataPartition(data,lag,horizon);
 
-Yfit =forecastSDAEBag(trainX, trainY, testX);
+Yfit =forecastSDAEBag(trainX, trainY, testX, numBag);
 
 e = cputime-t;
 sprintf('Elapsed CPU time is %f (second)', e)
@@ -31,5 +32,5 @@ plot(Yfit-testY,'g-o');
 linkaxes(ax,'x');
 grid on;
 title('Yfit - testY (USD)')
-print(fig1,'-dpng','-r200','Crude Price Comparison(GPU)')
+print(fig1,'-dpng','-r200','Crude Price Comparison(Bag=1)')
 
